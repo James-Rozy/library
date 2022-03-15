@@ -3,8 +3,8 @@
 :root {
   --main-font-family: 'Poppins', sans-serif;
   --navbar-bg-color: #64748b;
-  --active-bg-color: #475569;
   --content-bg-color: #e2e8f0;
+  --active-bg-color: #cbd5e1;
   --dark-text-color: #1e293b;
   --light-text-color: #f1f5f9;
   --shadow-color: rgba(0, 0, 0, 0.25);
@@ -19,9 +19,10 @@
 h1 {
   font-size: 2.5rem;
   font-weight: 700;
+  text-shadow: 0 2px 5px var(--shadow-color);
 }
 
-.navbar,
+.header,
 .footer {
   color: var(--light-text-color);
 }
@@ -33,11 +34,17 @@ body {
   grid-template-rows: 1fr 8fr 0.5fr;
 }
 
-.navbar {
+.header {
   display: flex;
-  place-content: center;
-  place-items: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
   background-color: var(--navbar-bg-color);
+}
+
+.controls {
+  display: flex;
+  gap: 32px;
 }
 
 .content {
@@ -51,25 +58,29 @@ body {
   box-shadow: inset 0px 2px 5px var(--shadow-color);
 }
 
-.btn-add-book {
+.btn-add-book,
+.btn-login {
   border: none;
-  border-radius: 16px;
-  padding: 8px;
-  background-color: var(--navbar-bg-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: var(--light-text-color);
   font-size: 1.2rem;
   font-weight: 400;
-  color: var(--light-text-color);
+  color: var(--dark-text-color);
+  box-shadow: 0 5px 10px 0 var(--shadow-color);
   transition-duration: 0.2s;
 }
 
-.btn-add-book:hover {
-  background-color: var(--active-bg-color);
-  box-shadow: 0 5px 10px 0 var(--shadow-color);
+.btn-add-book:hover,
+.btn-login:hover {
+  background-color: var(--content-bg-color);
 }
 
-.btn-add-book:active {
+.btn-add-book:active,
+.btn-login:active {
   transform: translateY(2px);
-  box-shadow: 0 4px 10px 0 var(--shadow-color);
+  background-color: var(--active-bg-color);
+  box-shadow: 0 3px 10px 0 var(--shadow-color);
 }
 
 .footer {
