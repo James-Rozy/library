@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Library</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
-</head>
-<body>
-  <header class="header">
-    <h1>myLibrary</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1>myLibrary</h1>
 
-    <div class="controls">
-      <button class="btn-add-book">Add book</button>
-      <!-- <button class="btn-login">Log in</button> -->
+      <div class="controls">
+        <button class="btn-add-book">Add book</button>
+        <!-- <button class="btn-login">Log in</button> -->
+      </div>
+    </header>
+
+    <div class="library">
+      <div class="book-card">
+        <h3 class="title">Title</h3>
+        <p class="author">Author</p>
+        <p class="genre">Genre</p>
+        <p class="pages">Pages</p>
+        <div class="read">
+          <p class="is-read">Read</p>
+          <input type="checkbox" name="if-read" class="if-read" />
+        </div>
+        <button class="btn-delete-book">Delete</button>
+      </div>
     </div>
-  </header>
 
-  <div class="content">    
-    <div class="book-list">
-      <div class="card"></div>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <p>James Rozsypal &copy 2022</p>
-  </footer>
-</body>
+    <footer class="footer">
+      <p>James Rozsypal &copy 2022</p>
+    </footer>
+  </body>
 </html>
