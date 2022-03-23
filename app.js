@@ -1,6 +1,15 @@
-const libraryGrid = document.querySelector(".library");
+const body = document.querySelector("body");
+const libraryGrid = document.querySelector(".library-grid");
 const btnAddBook = document.querySelector(".btn-add-book");
-const btnDeleteBook = document.querySelector(".btn-delete-book");
+const modalAddBook = document.querySelector(".modal-add-book");
+const modalContent = document.querySelector(".modal-content");
+const addBookForm = document.querySelector(".add-book-form");
+const titleInput = document.querySelector(".title-input");
+const authorInput = document.querySelector(".author-input");
+const genreInput = document.querySelector(".genre-input");
+const pagesInput = document.querySelector(".pages-input");
+const isReadInput = document.querySelector(".is-read-input");
+const modalBtnDone = document.querySelector(".modal-btn-done");
 
 let myLibrary = [];
 
@@ -26,11 +35,23 @@ function Book(title, author, genre, pages, isRead) {
   };
 }
 
-function addBooksToLibrary(library = []) {
-  for (i in library) {
-    let currBook = library[i];
-    let currCard = bookCard(currBook);
+btnAddBook.onclick = () => addBook();
+
+function addBook() {
+  // if done is pressed add book to library and close modal
+  modalBtnDone.addEventListener("click", () => {
+
+    modalAddBook.style.display = "none";
+  });
+
+  // closing the modal by clicking on the blurred background
+  window.onclick = (e) => {
+    if (e.target === modalAddBook) {
+      modalAddBook.style.display = "none";
+    }
   }
+
+  modalAddBook.style.display = "block";
 }
 
 function bookCard(book) {
@@ -64,6 +85,7 @@ function bookCard(book) {
 
   if (isRead.textContent === "Read") {
     isRead.style.color = "var(--is-read-color)";
+    ifRead.setAttribute("checked", "true");
   } else {
     isRead.style.color = "var(--delete-bg-color)";
   }
@@ -78,7 +100,9 @@ function bookCard(book) {
     }
   });
 
-  // deleteBtn.addEventListener("")
+  deleteBtn.addEventListener("click", () => {
+    card.remove();
+  });
 
   card.appendChild(title);
   card.appendChild(author);
@@ -91,8 +115,11 @@ function bookCard(book) {
   libraryGrid.appendChild(card);
 }
 
-function checkIfRead(e) {
-  
+function addBooksToLibrary(library = []) {
+  for (i in library) {
+    let currBook = library[i];
+    let currCard = bookCard(currBook);
+  }
 }
 
 const theHobbit = new Book(
@@ -100,15 +127,15 @@ const theHobbit = new Book(
   "J.R.R. Tolkien",
   "Fantasy Fiction",
   "295",
-  "Not read"
+  "Read"
 );
 
 const chamberOfSecrets = new Book(
-  "Harry Potter 2",
+  "Harry Potter and the Chamber of Secrets",
   "J.K. Rowling",
   "Fantasy Fiction",
   "341",
-  "Not read"
+  "Read"
 );
 
 myLibrary.push(theHobbit);

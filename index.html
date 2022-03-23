@@ -18,7 +18,7 @@
       </div>
     </header>
 
-    <div class="library">
+    <div class="library-grid">
       <div class="book-card">
         <h3 class="title">Title</h3>
         <p class="author">Author</p>
@@ -35,5 +35,33 @@
     <footer class="footer">
       <p>James Rozsypal &copy 2022</p>
     </footer>
+
+    <div class="modal-add-book">
+      <div class="modal-content">
+        <div class="add-book-form">
+          <div>
+            <label for="title-input">Title</label>
+            <input type="text" class="title-input" required>
+          </div>
+          <div>
+            <label for="author-input">Author</label>
+            <input type="text" class="author-input" required>
+          </div>
+          <div>
+            <label for="genre-input">Genre</label>
+            <input type="text" class="genre-input" required>
+          </div>
+          <div>
+            <label for="pages-input">Pages</label>
+            <input type="text" class="pages-input" required>
+          </div>
+          <div>
+            <label for="is-read-input">Have you read this?</label>
+            <input type="checkbox" class="is-read-input">
+          </div>
+          <button type="submit" class="modal-btn-done">Done</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
