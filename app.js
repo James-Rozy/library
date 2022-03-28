@@ -18,7 +18,12 @@ function Book(title, author, genre, pages, isRead) {
   this.author = author;
   this.genre = genre;
   this.pages = pages;
-  this.isRead = isRead;
+
+  if (isRead === true) {
+    this.isRead = "Read";
+  } else {
+    this.isRead = "Not Read"
+  }
 
   this.info = () => {
     return console.log(
@@ -40,7 +45,17 @@ btnAddBook.onclick = () => addBook();
 function addBook() {
   // if done is pressed add book to library and close modal
   modalBtnDone.addEventListener("click", () => {
+    const newBook = getNewBook();
 
+    resetLibraryGrid();
+
+    console.log(myLibrary);
+
+    titleInput.value = "";
+    authorInput.value = "";
+    genreInput.value = "";
+    pagesInput.value = "";
+    isReadInput.setAttribute("checked", false);
     modalAddBook.style.display = "none";
   });
 
@@ -52,6 +67,19 @@ function addBook() {
   }
 
   modalAddBook.style.display = "block";
+}
+
+function getNewBook() {
+  const newTitle = titleInput.value;
+  const newAuthor = authorInput.value;
+  const newGenre = genreInput.value;
+  const newPages = pagesInput.value;
+  const newIsRead = isReadInput.value;
+
+  const newBook = new Book(newTitle, newAuthor, newGenre, newPages, newIsRead);
+  myLibrary.push(newBook);
+
+  return newBook;
 }
 
 function bookCard(book) {
@@ -115,11 +143,19 @@ function bookCard(book) {
   libraryGrid.appendChild(card);
 }
 
-function addBooksToLibrary(library = []) {
+function addBooksToGrid(library = []) {
   for (i in library) {
     let currBook = library[i];
-    let currCard = bookCard(currBook);
+    bookCard(currBook);
   }
+}
+
+function resetLibraryGrid() {
+  while (libraryGrid.firstChild) {
+    libraryGrid.removeChild(libraryGrid.firstChild);
+  }
+
+  addBooksToGrid(myLibrary);
 }
 
 const theHobbit = new Book(
@@ -141,4 +177,3 @@ const chamberOfSecrets = new Book(
 myLibrary.push(theHobbit);
 myLibrary.push(chamberOfSecrets);
 
-addBooksToLibrary(myLibrary);
