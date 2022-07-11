@@ -174,6 +174,8 @@ const chamberOfSecrets = new Book(
   "Read"
 );
 
+// sample books for testing
 myLibrary.push(theHobbit);
 myLibrary.push(chamberOfSecrets);
+addBooksToGrid(myLibrary);
 
